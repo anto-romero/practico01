@@ -10,28 +10,28 @@ const server = http.createServer((req, res) => {
   const method = req.method;
 
   // Ruta raíz con método GET
-  if (pathName === "/" && method === "GET") {
+  if (pathName === '/' && method === "GET") {
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
-    res.end("Página de inicio\n");
+    res.end("Pagina de inicio\n");
 
     // Ruta '/data' con método GET
-  } else if (pathName === "/data" && method === "GET") {
+  } else if (pathName === '/about' && method === "GET") {
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
     res.end("Acerca de nosotros\n");
 
     // Ruta '/data' con método POST
-  } else if (pathName === "/data" && method === "POST") {
+  } else if (pathName === '/data' && method === "POST") {
     let body = "";
 
     // Recibir datos del cuerpo de la solicitud
-    req.on("data", (chunk) => {
+    req.on('data', (chunk) => {
       body += chunk.toString();
     });
 
     // Finalizar recepción de datos y enviar respuesta
-    req.on("end", () => {
+    req.on('end', () => {
       res.statusCode = 200;
       res.setHeader("Content-Type", "text/plain");
       res.end(`Datos recibidos: ${body}\n`);
